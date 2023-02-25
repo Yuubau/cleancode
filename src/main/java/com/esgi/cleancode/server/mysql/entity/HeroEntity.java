@@ -3,28 +3,33 @@ package com.esgi.cleancode.server.mysql.entity;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnName;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnType;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbTableName;
+import com.esgi.cleancode.server.mysql.driver.util.GenericDb;
+import lombok.Builder;
+import lombok.With;
 
 @DbTableName(value = "hero")
-public class HeroEntity {
+@Builder
+public class HeroEntity extends GenericDb {
 
     @DbColumnName(value = "id")
     @DbColumnType(type = Integer.class)
-    private Integer id;
+    @With private Integer id;
 
     @DbColumnName(value = "experience_points")
     @DbColumnType(type = Integer.class)
-    private Integer experiencePoints;
+    @With private Integer experiencePoints;
 
     @DbColumnName(value = "player_id")
     @DbColumnType(type = Integer.class)
-    private Integer playerId;
+    @With private Integer playerId;
 
     @DbColumnName(value = "hero_id")
     @DbColumnType(type = Integer.class)
-    private Integer heroId;
+    @With private Integer heroId;
 
     @DbColumnName(value = "level")
     @DbColumnType(type = Integer.class)
+    @With
     private Integer level;
 
     public Integer getId() {
