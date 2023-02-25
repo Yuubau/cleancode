@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenericDao {
+public class GenericDao<T extends GenericDb> {
 
     protected DbConnection jdbc = DbConnection.getInstance();
 
@@ -34,7 +34,7 @@ public class GenericDao {
         return request.toString();
     }
 
-    public int insert(GenericDb object) throws SQLException {
+    public T insert(T object) throws SQLException {
         int recordCounter = 0;
         PreparedStatement ps = null;
         Connection connection = jdbc.getConnection();
@@ -49,7 +49,7 @@ public class GenericDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return recordCounter;
+        return object;
     }
 
     private String prepareUpdateRequest(String className, List<Pair<String, String>> params) {
