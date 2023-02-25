@@ -9,7 +9,7 @@ public class HeroEntity {
 
     @DbColumnName(value = "id")
     @DbColumnType(type = Integer.class)
-    private Integer name;
+    private Integer id;
 
     @DbColumnName(value = "experience_points")
     @DbColumnType(type = Integer.class)
@@ -27,12 +27,12 @@ public class HeroEntity {
     @DbColumnType(type = Integer.class)
     private Integer level;
 
-    public Integer getName() {
-        return name;
+    public Integer getId() {
+        return id;
     }
 
-    public void setName(Integer name) {
-        this.name = name;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getExperiencePoints() {
