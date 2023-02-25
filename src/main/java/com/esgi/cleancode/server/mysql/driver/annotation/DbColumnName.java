@@ -1,4 +1,4 @@
-package com.esgi.cleancode.server.driver.annotation;
+package com.esgi.cleancode.server.mysql.driver.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,8 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface DbColumnType {
-
-    public Class<?> type();
-
+public @interface DbColumnName {
+    public String value();
 }

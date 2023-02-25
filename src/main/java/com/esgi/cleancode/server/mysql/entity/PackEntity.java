@@ -1,12 +1,12 @@
-package com.esgi.cleancode.domain.functional.model;
+package com.esgi.cleancode.server.mysql.entity;
 
 
-import com.esgi.cleancode.server.driver.annotation.DbColumnName;
-import com.esgi.cleancode.server.driver.annotation.DbColumnType;
-import com.esgi.cleancode.server.driver.annotation.DbTableName;
+import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnName;
+import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnType;
+import com.esgi.cleancode.server.mysql.driver.annotation.DbTableName;
 
 @DbTableName(value = "pack")
-public class Pack {
+public class PackEntity {
 
     @DbColumnName(value = "id")
     @DbColumnType(type = Integer.class)
@@ -36,7 +36,7 @@ public class Pack {
     @DbColumnType(type = Integer.class)
     private Integer  commonPercentage;
 
-    public Pack(Integer id, Integer name, Integer price, Integer cardNumber, Integer legendaryPercentage, Integer rarePercentage, Integer commonPercentage) {
+    public PackEntity(Integer id, Integer name, Integer price, Integer cardNumber, Integer legendaryPercentage, Integer rarePercentage, Integer commonPercentage) {
         this.id = id;
         this.name = name;
         this.price = price;

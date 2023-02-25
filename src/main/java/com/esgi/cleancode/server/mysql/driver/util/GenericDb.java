@@ -1,10 +1,10 @@
-package com.esgi.cleancode.server.driver.generic;
+package com.esgi.cleancode.server.mysql.driver.util;
 
 
 
-import com.esgi.cleancode.server.driver.annotation.DbColumnName;
-import com.esgi.cleancode.server.driver.annotation.DbColumnType;
-import com.esgi.cleancode.server.driver.annotation.DbTableName;
+import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnName;
+import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnType;
+import com.esgi.cleancode.server.mysql.driver.annotation.DbTableName;
 import javafx.util.Pair;
 
 import java.lang.reflect.Field;

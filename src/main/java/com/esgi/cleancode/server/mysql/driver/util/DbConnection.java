@@ -1,4 +1,4 @@
-package com.esgi.cleancode.server;
+package com.esgi.cleancode.server.mysql.driver.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

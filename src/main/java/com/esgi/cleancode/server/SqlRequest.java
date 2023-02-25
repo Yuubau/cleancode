@@ -1,5 +1,7 @@
 package com.esgi.cleancode.server;
 
+import com.esgi.cleancode.server.mysql.driver.util.DbConnection;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

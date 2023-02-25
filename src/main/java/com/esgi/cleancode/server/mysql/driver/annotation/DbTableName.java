@@ -1,4 +1,4 @@
-package com.esgi.cleancode.server.driver.annotation;
+package com.esgi.cleancode.server.mysql.driver.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
