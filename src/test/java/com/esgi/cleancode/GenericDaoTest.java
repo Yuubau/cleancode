@@ -10,7 +10,6 @@ public class GenericDaoTest {
 
     @Test
     public void test() {
-        Hero
     }
 
 
