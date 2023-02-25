@@ -19,12 +19,16 @@ public class Fight {
     @DbColumnType(type = Integer.class)
     private Integer defendingHeroId;
 
+    @DbColumnName(value = "winner_hero_id")
+    @DbColumnType(type = Integer.class)
+    private Integer attackerWin;
+
 
     public Fight(Integer id, Integer attackingHeroId, Integer defendingHeroId, Integer winnerHeroId) {
         this.id = id;
         this.attackingHeroId = attackingHeroId;
         this.defendingHeroId = defendingHeroId;
-        this.winnerHeroId = winnerHeroId;
+        this.attackerWin = winnerHeroId;
     }
 
     public Integer getId() {
@@ -52,15 +56,11 @@ public class Fight {
     }
 
     public Integer getWinnerHeroId() {
-        return winnerHeroId;
+        return attackerWin;
     }
 
     public void setWinnerHeroId(Integer winnerHeroId) {
-        this.winnerHeroId = winnerHeroId;
+        this.attackerWin = winnerHeroId;
     }
-
-    @DbColumnName(value = "winner_hero_id")
-    @DbColumnType(type = Integer.class)
-    private Integer winnerHeroId;
 
 }
