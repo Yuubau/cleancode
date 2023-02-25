@@ -11,14 +11,14 @@ CREATE TABLE fight(
     id INT PRIMARY KEY AUTO_INCREMENT,
     attacking_hero_id INT,
     defending_hero_id INT,
-    winner_hero_id INT  
+    attacker_win BOOLEAN
 );
 
 CREATE TABLE player(
     id INT PRIMARY KEY AUTO_INCREMENT,
     pseudo varchar(50),
     chip_number INT,
-    win_counter INT
+    win_count INT
 );
 
 CREATE TABLE pack(
@@ -34,10 +34,6 @@ CREATE TABLE pack(
 CREATE TABLE hero(
     id INT PRIMARY KEY AUTO_INCREMENT,
     experience_point INT,
-    health_points INT,
-    max_health_points INT,
-    power INT,
-    armor INT,
     player_id INT,
     hero_id INT,
     level INT
