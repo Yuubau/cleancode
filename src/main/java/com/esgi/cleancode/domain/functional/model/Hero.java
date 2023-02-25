@@ -27,4 +27,43 @@ public class Hero {
     @DbColumnType(type = Integer.class)
     private Integer level;
 
+    public Integer getName() {
+        return name;
+    }
+
+    public void setName(Integer name) {
+        this.name = name;
+    }
+
+    public Integer getExperiencePoints() {
+        return experiencePoints;
+    }
+
+    public void setExperiencePoints(Integer experiencePoints) {
+        this.experiencePoints = experiencePoints;
+    }
+
+    public Integer getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(Integer playerId) {
+        this.playerId = playerId;
+    }
+
+    public Integer getHeroId() {
+        return heroId;
+    }
+
+    public void setHeroId(Integer heroId) {
+        this.heroId = heroId;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 }
