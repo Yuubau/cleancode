@@ -33,4 +33,9 @@ public class HeroAdapter extends HeroDao implements HeroDbPort {
                 .map(HeroEntityMapper::toDomainList);
     }
 
+    @Override
+    public Either<ApplicationError, Hero> getById(Integer id) {
+        return null;
+    }
+
 }

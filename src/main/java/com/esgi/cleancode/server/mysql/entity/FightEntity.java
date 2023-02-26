@@ -3,9 +3,10 @@ package com.esgi.cleancode.server.mysql.entity;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnName;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnType;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbTableName;
+import com.esgi.cleancode.server.mysql.driver.util.GenericDb;
 
 @DbTableName(value = "fight")
-public class FightEntity {
+public class FightEntity extends GenericDb {
 
     @DbColumnName(value = "id")
     @DbColumnType(type = Integer.class)
@@ -19,16 +20,16 @@ public class FightEntity {
     @DbColumnType(type = Integer.class)
     private Integer defendingHeroId;
 
-    @DbColumnName(value = "winner_hero_id")
-    @DbColumnType(type = Integer.class)
-    private Integer attackerWin;
+    @DbColumnName(value = "attacker_win")
+    @DbColumnType(type = Boolean.class)
+    private Boolean attackerWin;
 
 
-    public FightEntity(Integer id, Integer attackingHeroId, Integer defendingHeroId, Integer winnerHeroId) {
+    public FightEntity(Integer id, Integer attackingHeroId, Integer defendingHeroId, Boolean attackerWin) {
         this.id = id;
         this.attackingHeroId = attackingHeroId;
         this.defendingHeroId = defendingHeroId;
-        this.attackerWin = winnerHeroId;
+        this.attackerWin = attackerWin;
     }
 
     public Integer getId() {
@@ -55,12 +56,19 @@ public class FightEntity {
         this.defendingHeroId = defendingHeroId;
     }
 
-    public Integer getWinnerHeroId() {
+    public Boolean getWinnerHeroId() {
         return attackerWin;
     }
 
-    public void setWinnerHeroId(Integer winnerHeroId) {
+    public void setWinnerHeroId(Boolean winnerHeroId) {
         this.attackerWin = winnerHeroId;
     }
 
+    public Boolean getAttackerWin() {
+        return attackerWin;
+    }
+
+    public void setAttackerWin(Boolean attackerWin) {
+        this.attackerWin = attackerWin;
+    }
 }

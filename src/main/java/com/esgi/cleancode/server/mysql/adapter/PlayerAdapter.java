@@ -37,4 +37,9 @@ public class PlayerAdapter extends PlayerDao implements PlayerDbPort {
                 .map(PlayerEntityMapper::toDomainList);
     }
 
+    @Override
+    public Either<ApplicationError, Player> getById(Integer id) {
+        return null;
+    }
+
 }

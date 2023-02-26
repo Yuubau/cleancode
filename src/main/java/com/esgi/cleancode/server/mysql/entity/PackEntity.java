@@ -4,9 +4,15 @@ package com.esgi.cleancode.server.mysql.entity;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnName;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnType;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbTableName;
+import com.esgi.cleancode.server.mysql.driver.util.GenericDb;
+import jdk.jshell.Snippet;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
+@Builder
 @DbTableName(value = "pack")
-public class PackEntity {
+@NoArgsConstructor
+public class PackEntity extends GenericDb {
 
     @DbColumnName(value = "id")
     @DbColumnType(type = Integer.class)
@@ -14,7 +20,7 @@ public class PackEntity {
 
     @DbColumnName(value = "name")
     @DbColumnType(type = String.class)
-    private Integer name;
+    private String name;
 
     @DbColumnName(value = "price")
     @DbColumnType(type = Integer.class)
@@ -36,7 +42,7 @@ public class PackEntity {
     @DbColumnType(type = Integer.class)
     private Integer  commonPercentage;
 
-    public PackEntity(Integer id, Integer name, Integer price, Integer cardNumber, Integer legendaryPercentage, Integer rarePercentage, Integer commonPercentage) {
+    public PackEntity(Integer id, String name, Integer price, Integer cardNumber, Integer legendaryPercentage, Integer rarePercentage, Integer commonPercentage) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -46,6 +52,7 @@ public class PackEntity {
         this.commonPercentage = commonPercentage;
     }
 
+
     public Integer getId() {
         return id;
     }
@@ -54,11 +61,11 @@ public class PackEntity {
         this.id = id;
     }
 
-    public Integer getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Integer name) {
+    public void setName(String name) {
         this.name = name;
     }
 
