@@ -54,6 +54,15 @@ public class DomainConfiguration {
     return new HeroTemplateGetAllService(heroTemplateDbPort);
   }
 
+
+
+  @Bean
+  public HeroTemplateGetByIdPort heroTemplateGetByIdService(HeroTemplateDbPort heroTemplateDbPort) {
+    return new HeroTemplateGetByIdService(heroTemplateDbPort);
+  }
+
+
+
   @Bean
   public PlayerGetAllPort playerGetAllService(PlayerDbPort playerDbPort) {
     return new PlayerGetAllService(playerDbPort);

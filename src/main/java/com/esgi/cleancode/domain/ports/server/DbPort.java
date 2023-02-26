@@ -12,4 +12,6 @@ public interface DbPort<T> {
 
     Either<ApplicationError, List<T>> getAll();
 
+    Either<ApplicationError, T> getById(Integer id);
+
 }

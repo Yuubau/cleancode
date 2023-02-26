@@ -42,4 +42,13 @@ public class HeroTemplateAdapter extends HeroTemplateDao implements HeroTemplate
                 );
     }
 
+    @Override
+    public Either<ApplicationError, HeroTemplate> getById(Integer id) {
+        return Try(() -> super.get("SELECT * FROM hero_template WHERE id="+id, HeroTemplateEntity.class))
+                .toEither()
+                .mapLeft(throwable -> new ApplicationError("Unable to save licence", null, null, throwable))
+                .map(HeroTemplateEntityMapper::toDomain);
+    }
+
+
 }
