@@ -1,3 +1,6 @@
+CREATE DATABASE cleancode;
+USE testdb;
+
 CREATE TABLE hero_template(
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50),
