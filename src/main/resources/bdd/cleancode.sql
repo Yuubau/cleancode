@@ -1,5 +1,5 @@
-CREATE DATABASE cleancode;
-USE testdb;
+CREATE DATABASE IF NOT EXISTS cleancode;
+USE cleancode;
 
 CREATE TABLE hero_template(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -8,7 +8,7 @@ CREATE TABLE hero_template(
     health_points INT,
     power INT,
     armor INT,
-    rarity INT,
+    rarity INT
 );
 
 CREATE TABLE fight(
