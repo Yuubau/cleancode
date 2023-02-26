@@ -8,6 +8,8 @@ import com.esgi.cleancode.server.mysql.entity.HeroEntity;
 import com.esgi.cleancode.server.mysql.mapper.HeroEntityMapper;
 import io.vavr.control.Either;
 
+import java.util.List;
+
 import static com.esgi.cleancode.server.mysql.mapper.HeroEntityMapper.fromDomain;
 import static io.vavr.API.Try;
 
@@ -21,6 +23,14 @@ public class HeroAdapter extends HeroDao implements HeroDbPort {
                 .toEither()
                 .mapLeft(throwable -> new ApplicationError("Unable to save licence", null, o, throwable))
                 .map(HeroEntityMapper::toDomain);
+    }
+
+    @Override
+    public Either<ApplicationError, List<Hero>> getAll() {
+        return Try(() -> super.getList("SELECT * FROM hero", HeroEntity.class))
+                .toEither()
+                .mapLeft(throwable -> new ApplicationError("Unable to save licence", null, null, throwable))
+                .map(HeroEntityMapper::toDomainList);
     }
 
 }

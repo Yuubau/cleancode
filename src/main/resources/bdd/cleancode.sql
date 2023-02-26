@@ -1,6 +1,7 @@
 CREATE TABLE hero_template(
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50),
+    hero_type INT,
     health_points INT,
     power INT,
     armor INT,
