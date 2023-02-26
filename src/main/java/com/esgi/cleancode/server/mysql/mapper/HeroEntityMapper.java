@@ -3,6 +3,9 @@ package com.esgi.cleancode.server.mysql.mapper;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.server.mysql.entity.HeroEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface HeroEntityMapper {
 
   static Hero toDomain(HeroEntity entity) {
@@ -23,5 +26,21 @@ public interface HeroEntityMapper {
             .experiencePoints(domain.getExperiencePoints())
             .playerId(domain.getPlayerId())
             .build();
+  }
+
+  static List<Hero> toDomainList(List<HeroEntity> entities) {
+    List<Hero> l = new ArrayList<>();
+    for(HeroEntity entity:entities) {
+      l.add(toDomain(entity));
+    }
+    return l;
+  }
+
+  static List<HeroEntity> fromDomainList(List<Hero> domains) {
+    List<HeroEntity> l = new ArrayList<>();
+    for(Hero domain:domains) {
+      l.add(fromDomain(domain));
+    }
+    return l;
   }
 }
