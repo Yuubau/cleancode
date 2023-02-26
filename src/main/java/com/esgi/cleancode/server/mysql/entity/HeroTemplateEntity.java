@@ -3,9 +3,16 @@ package com.esgi.cleancode.server.mysql.entity;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnName;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnType;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbTableName;
+import com.esgi.cleancode.server.mysql.driver.util.GenericDb;
+import lombok.*;
 
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @DbTableName(value = "hero_template")
-public class HeroTemplateEntity {
+public class HeroTemplateEntity extends GenericDb {
 
     @DbColumnName(value = "id")
     @DbColumnType(type = Integer.class)
@@ -16,8 +23,8 @@ public class HeroTemplateEntity {
     private String name;
 
     @DbColumnName(value = "health_points")
-    @DbColumnType(type = String.class)
-    private String healthPoints;
+    @DbColumnType(type = Integer.class)
+    private Integer healthPoints;
 
     @DbColumnName(value = "power")
     @DbColumnType(type = Integer.class)
@@ -28,54 +35,11 @@ public class HeroTemplateEntity {
     private Integer armor;
 
     @DbColumnName(value = "rarity")
-    @DbColumnType(type = String.class)
-    private String rarity;
+    @DbColumnType(type = Integer.class)
+    private Integer rarity;
 
-    public Integer getId() {
-        return id;
-    }
+    @DbColumnName(value = "hero_type")
+    @DbColumnType(type = Integer.class)
+    private Integer heroType;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getHealthPoints() {
-        return healthPoints;
-    }
-
-    public void setHealthPoints(String healthPoints) {
-        this.healthPoints = healthPoints;
-    }
-
-    public Integer getPower() {
-        return power;
-    }
-
-    public void setPower(Integer power) {
-        this.power = power;
-    }
-
-    public Integer getArmor() {
-        return armor;
-    }
-
-    public void setArmor(Integer armor) {
-        this.armor = armor;
-    }
-
-    public String getRarity() {
-        return rarity;
-    }
-
-    public void setRarity(String rarity) {
-        this.rarity = rarity;
-    }
 }
