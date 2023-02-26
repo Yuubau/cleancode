@@ -2,6 +2,8 @@ package com.esgi.cleancode.server.mysql.mapper;
 
 import com.esgi.cleancode.domain.functional.model.Fight;
 import com.esgi.cleancode.server.mysql.entity.FightEntity;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;

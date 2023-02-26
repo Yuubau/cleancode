@@ -1,10 +1,13 @@
 package com.esgi.cleancode.server.mysql.adapter;
 
+import com.esgi.cleancode.domain.functional.model.Fight;
 import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.ports.ApplicationError;
 import com.esgi.cleancode.domain.ports.server.HeroDbPort;
 import com.esgi.cleancode.server.mysql.dao.HeroDao;
+import com.esgi.cleancode.server.mysql.entity.FightEntity;
 import com.esgi.cleancode.server.mysql.entity.HeroEntity;
+import com.esgi.cleancode.server.mysql.mapper.FightEntityMapper;
 import com.esgi.cleancode.server.mysql.mapper.HeroEntityMapper;
 import io.vavr.control.Either;
 
@@ -27,7 +30,7 @@ public class HeroAdapter extends HeroDao implements HeroDbPort {
 
     @Override
     public Either<ApplicationError, List<Hero>> getAll() {
-        return Try(() -> super.getList("SELECT * FROM hero ORDER BY NEWID();", HeroEntity.class))
+        return Try(() -> super.getList("SELECT * FROM hero ORDER BY RAND();", HeroEntity.class))
                 .toEither()
                 .mapLeft(throwable -> new ApplicationError("Unable to save licence", null, null, throwable))
                 .map(HeroEntityMapper::toDomainList);
@@ -58,6 +61,14 @@ public class HeroAdapter extends HeroDao implements HeroDbPort {
                 .toEither()
                 .mapLeft(throwable -> new ApplicationError("Unable to fetch datas", null, null, throwable))
                 .map(HeroEntityMapper::toDomainList);
+    }
+
+    @Override
+    public Either<ApplicationError, List<Fight>> getHeroFights(Integer heroId) {
+        return Try(() -> super.getList("SELECT * FROM fight where attacking_hero_id =" + heroId + " or defending_hero_id = " + heroId + ";", FightEntity.class))
+                .toEither()
+                .mapLeft(throwable -> new ApplicationError("Unable to fetch datas", null, null, throwable))
+                .map(FightEntityMapper::toDomainList);
     }
 
 }

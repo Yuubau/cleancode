@@ -10,7 +10,8 @@ import static io.vavr.API.Valid;
 public interface PlayerValidator {
 
   static Validation<ApplicationError, Player> validate(Player player) {
-    return player.getPseudo() == null || player.getChipNumber() == null || player.getWinCount() != null
+    System.out.println(player);
+    return player.getPseudo() == null || player.getChipNumber() == null || player.getWinCount() == null
             ? Invalid(
             new ApplicationError(
                     "Label required", "You must provide an offence label", player, null))

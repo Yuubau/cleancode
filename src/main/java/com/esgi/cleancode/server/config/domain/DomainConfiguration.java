@@ -108,4 +108,9 @@ public class DomainConfiguration {
     return new HeroGetPlayerHeroService(heroDbPort);
   }
 
+  @Bean
+  public HeroGetHeroFightsPort heroGetHeroFightsPort() {
+    return new HeroGetHeroFightsService(heroDbPort());
+  }
+
 }
