@@ -21,11 +21,10 @@ public class HeroCreatorService implements HeroCreatorPort {
 
     @Override
     public Either<ApplicationError, Hero> create(Hero hero) {
-        HeroValidator.validate(hero)
+        return HeroValidator.validate(hero)
                 .toEither()
                 .peekLeft(
                         error -> log.error("An error occurred while validating Hero : {}", error))
                 .flatMap(spi::save);
-        return spi.save(hero);
     }
 }

@@ -23,11 +23,10 @@ public class PlayerCreatorService implements PlayerCreatorPort {
 
     @Override
     public Either<ApplicationError, Player> create(Player player) {
-        PlayerValidator.validate(player)
+        return PlayerValidator.validate(player)
                 .toEither()
                 .peekLeft(
                         error -> log.error("An error occurred while validating player : {}", error))
                 .flatMap(spi::save);
-        return spi.save(player);
     }
 }

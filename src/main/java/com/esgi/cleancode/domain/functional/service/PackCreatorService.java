@@ -23,11 +23,10 @@ public class PackCreatorService implements PackCreatorPort {
 
     @Override
     public Either<ApplicationError, Pack> create(Pack pack) {
-        PackValidator.validate(pack)
+        return PackValidator.validate(pack)
                 .toEither()
                 .peekLeft(
                         error -> log.error("An error occurred while validating pack : {}", error))
                 .flatMap(spi::save);
-        return spi.save(pack);
     }
 }

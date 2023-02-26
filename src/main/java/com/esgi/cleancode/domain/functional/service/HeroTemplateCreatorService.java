@@ -25,11 +25,10 @@ public class HeroTemplateCreatorService implements HeroTemplateCreatorPort {
 
     @Override
     public Either<ApplicationError, HeroTemplate> create(HeroTemplate heroTemplate) {
-        HeroTemplateValidator.validate(heroTemplate)
+        return HeroTemplateValidator.validate(heroTemplate)
                 .toEither()
                 .peekLeft(
                         error -> log.error("An error occurred while validating Hero template : {}", error))
                 .flatMap(spi::save);
-        return spi.save(heroTemplate);
     }
 }

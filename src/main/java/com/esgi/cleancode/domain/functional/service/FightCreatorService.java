@@ -22,11 +22,10 @@ public class FightCreatorService implements FightCreatorPort {
 
     @Override
     public Either<ApplicationError, Fight> create(Fight fight) {
-        FightValidator.validate(fight)
+        return FightValidator.validate(fight)
                 .toEither()
                 .peekLeft(
                         error -> log.error("An error occurred while validating fight : {}", error))
                 .flatMap(spi::save);
-        return spi.save(fight);
     }
 }
