@@ -10,7 +10,11 @@ import com.esgi.cleancode.domain.ports.server.HeroTemplateDbPort;
 import io.vavr.control.Either;
 
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class HeroGetAllService implements HeroGetAllPort {
 
     private final HeroDbPort spi;
@@ -21,6 +25,7 @@ public class HeroGetAllService implements HeroGetAllPort {
 
     @Override
     public Either<ApplicationError, List<Hero>> getAll() {
+
         return spi.getAll();
     }
 }

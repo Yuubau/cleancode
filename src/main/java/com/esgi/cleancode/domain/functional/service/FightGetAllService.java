@@ -20,6 +20,7 @@ public class FightGetAllService implements FightGetAllPort {
     }
 
     @Override
+
     public Either<ApplicationError, List<Fight>> getAll() {
         return spi.getAll();
     }
