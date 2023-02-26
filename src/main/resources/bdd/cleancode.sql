@@ -1,5 +1,5 @@
 CREATE DATABASE cleancode;
-USE testdb;
+USE cleancode;
 
 CREATE TABLE hero_template(
     id INT PRIMARY KEY AUTO_INCREMENT,
