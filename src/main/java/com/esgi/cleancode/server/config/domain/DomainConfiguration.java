@@ -68,4 +68,9 @@ public class DomainConfiguration {
     return new PlayerGetAllService(playerDbPort);
   }
 
+  @Bean
+  public HeroGetAllPort HeroGetAllService(HeroDbPort heroDbPort) {
+    return new HeroGetAllService(heroDbPort);
+  }
+
 }

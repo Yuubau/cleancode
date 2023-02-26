@@ -27,7 +27,7 @@ public class HeroAdapter extends HeroDao implements HeroDbPort {
 
     @Override
     public Either<ApplicationError, List<Hero>> getAll() {
-        return Try(() -> super.getList("SELECT * FROM hero", HeroEntity.class))
+        return Try(() -> super.getList("SELECT * FROM hero;", HeroEntity.class))
                 .toEither()
                 .mapLeft(throwable -> new ApplicationError("Unable to save licence", null, null, throwable))
                 .map(HeroEntityMapper::toDomainList);
