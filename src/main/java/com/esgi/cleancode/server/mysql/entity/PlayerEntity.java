@@ -3,9 +3,12 @@ package com.esgi.cleancode.server.mysql.entity;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnName;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnType;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbTableName;
+import com.esgi.cleancode.server.mysql.driver.util.GenericDb;
+import lombok.Builder;
 
+@Builder
 @DbTableName(value = "player")
-public class PlayerEntity {
+public class PlayerEntity extends GenericDb {
 
     @DbColumnName(value = "id")
     @DbColumnType(type = Integer.class)
@@ -17,7 +20,7 @@ public class PlayerEntity {
 
     @DbColumnName(value = "chip_number")
     @DbColumnType(type = Integer.class)
-    private Integer chip_number;
+    private Integer chipNumber;
 
     @DbColumnName(value = "win_count")
     @DbColumnType(type = Integer.class)
@@ -39,12 +42,12 @@ public class PlayerEntity {
         this.pseudo = pseudo;
     }
 
-    public Integer getChip_number() {
-        return chip_number;
+    public Integer getChipNumber() {
+        return chipNumber;
     }
 
-    public void setChip_number(Integer chip_number) {
-        this.chip_number = chip_number;
+    public void setChipNumber(Integer chip_number) {
+        this.chipNumber = chip_number;
     }
 
     public Integer getWinCount() {
