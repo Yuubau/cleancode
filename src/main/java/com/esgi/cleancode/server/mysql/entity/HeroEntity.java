@@ -4,11 +4,15 @@ import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnName;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbColumnType;
 import com.esgi.cleancode.server.mysql.driver.annotation.DbTableName;
 import com.esgi.cleancode.server.mysql.driver.util.GenericDb;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.With;
 
 @DbTableName(value = "hero")
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class HeroEntity extends GenericDb {
 
     @DbColumnName(value = "id")
