@@ -212,7 +212,7 @@ public class GenericDao<T extends GenericDb> {
             }
             return objects;
         } catch (Exception e) {
-            System.out.println("Une erreur est survenue");
+            System.out.println(e);
             return null;
         }
     }
