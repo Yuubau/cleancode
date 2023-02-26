@@ -95,5 +95,10 @@ public class DomainConfiguration {
     return new FightCreatorService(fightDbPort);
   }
 
+  @Bean
+  public FightStartPort fightStartService(FightDbPort fightDbPort) {
+    return new FightStartService(fightDbPort, heroDbPort(), heroTemplateDbPort());
+  }
+
 
 }

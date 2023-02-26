@@ -70,7 +70,7 @@ public class GenericDao<T extends GenericDb> {
         return request.toString();
     }
 
-    public int update(GenericDb object) throws SQLException {
+    public T update(T object) throws SQLException {
         int recordCounter = 0;
         PreparedStatement ps = null;
         Connection connection = jdbc.getConnection();
@@ -81,7 +81,7 @@ public class GenericDao<T extends GenericDb> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return recordCounter;
+        return object;
     }
 
     private String prepareDeleteRequest(String className, List<Pair<String, String>> params) {

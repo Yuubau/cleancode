@@ -1,5 +1,6 @@
 package com.esgi.cleancode.server.mysql.adapter;
 
+import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.functional.model.Pack;
 import com.esgi.cleancode.domain.functional.model.Player;
 import com.esgi.cleancode.domain.ports.ApplicationError;
@@ -7,8 +8,10 @@ import com.esgi.cleancode.domain.ports.server.PackDbPort;
 import com.esgi.cleancode.domain.ports.server.PlayerDbPort;
 import com.esgi.cleancode.server.mysql.dao.PackDao;
 import com.esgi.cleancode.server.mysql.dao.PlayerDao;
+import com.esgi.cleancode.server.mysql.entity.HeroEntity;
 import com.esgi.cleancode.server.mysql.entity.PackEntity;
 import com.esgi.cleancode.server.mysql.entity.PlayerEntity;
+import com.esgi.cleancode.server.mysql.mapper.HeroEntityMapper;
 import com.esgi.cleancode.server.mysql.mapper.PackEntityMapper;
 import io.vavr.control.Either;
 
@@ -40,6 +43,16 @@ public class PackAdapter extends PackDao implements PackDbPort {
     @Override
     public Either<ApplicationError, Pack> getById(Integer id) {
         return null;
+    }
+
+    @Override
+    public Either<ApplicationError, Pack> update(Pack o) {
+            PackEntity entity = PackEntityMapper.fromDomain(o);
+
+            return Try(() -> super.update(entity))
+                    .toEither()
+                    .mapLeft(throwable -> new ApplicationError("Unable to update pack", null, null, throwable))
+                    .map(PackEntityMapper::toDomain);
     }
 
 }

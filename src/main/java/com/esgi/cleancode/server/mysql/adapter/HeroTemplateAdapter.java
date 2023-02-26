@@ -44,10 +44,21 @@ public class HeroTemplateAdapter extends HeroTemplateDao implements HeroTemplate
 
     @Override
     public Either<ApplicationError, HeroTemplate> getById(Integer id) {
-        return Try(() -> super.get("SELECT * FROM hero_template WHERE id="+id, HeroTemplateEntity.class))
+        return Try(() -> super.get("SELECT * FROM hero_template WHERE id="+id + ";", HeroTemplateEntity.class))
                 .toEither()
                 .mapLeft(throwable -> new ApplicationError("Unable to save licence", null, null, throwable))
                 .map(HeroTemplateEntityMapper::toDomain);
+    }
+
+    @Override
+    public Either<ApplicationError, HeroTemplate> update(HeroTemplate o) {
+            HeroTemplateEntity entity = HeroTemplateEntityMapper.fromDomain(o);
+
+            return Try(() -> super.update(entity))
+                    .toEither()
+                    .mapLeft(throwable -> new ApplicationError("Unable to update Hero template", null, null, throwable))
+                    .map(HeroTemplateEntityMapper::toDomain);
+
     }
 
 

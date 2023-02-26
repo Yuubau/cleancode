@@ -5,7 +5,9 @@ import com.esgi.cleancode.domain.ports.ApplicationError;
 import com.esgi.cleancode.domain.ports.server.HeroDbPort;
 import com.esgi.cleancode.server.mysql.dao.HeroDao;
 import com.esgi.cleancode.server.mysql.entity.HeroEntity;
+import com.esgi.cleancode.server.mysql.entity.HeroTemplateEntity;
 import com.esgi.cleancode.server.mysql.mapper.HeroEntityMapper;
+import com.esgi.cleancode.server.mysql.mapper.HeroTemplateEntityMapper;
 import io.vavr.control.Either;
 
 import java.util.List;
@@ -35,7 +37,22 @@ public class HeroAdapter extends HeroDao implements HeroDbPort {
 
     @Override
     public Either<ApplicationError, Hero> getById(Integer id) {
-        return null;
+
+        return Try(() -> super.get("SELECT * FROM hero WHERE id="+id + ";", HeroEntity.class))
+                .toEither()
+                .mapLeft(throwable -> new ApplicationError("Unable to save licence", null, null, throwable))
+                .map(HeroEntityMapper::toDomain);
     }
+
+    @Override
+    public Either<ApplicationError, Hero> update(Hero o) {
+        HeroEntity entity = fromDomain(o);
+
+        return Try(() -> super.update(entity))
+                .toEither()
+                .mapLeft(throwable -> new ApplicationError("Unable to update Hero", null, null, throwable))
+                .map(HeroEntityMapper::toDomain);
+    }
+
 
 }

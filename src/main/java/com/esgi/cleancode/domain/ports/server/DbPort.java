@@ -14,4 +14,6 @@ public interface DbPort<T> {
 
     Either<ApplicationError, T> getById(Integer id);
 
+    Either<ApplicationError, T> update(T o);
+
 }
