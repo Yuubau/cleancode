@@ -31,11 +31,10 @@ public class PlayerAdapter extends PlayerDao implements PlayerDbPort {
 
     @Override
     public Either<ApplicationError, List<Player>> getAll() {
-        return null;
-                /*Try(() -> super.getList("SELECT * FROM hero", HeroEntity.class))
+        return Try(() -> super.getList("SELECT * FROM player;", PlayerEntity.class))
                 .toEither()
                 .mapLeft(throwable -> new ApplicationError("Unable to save licence", null, null, throwable))
-                .map(HeroEntityMapper::toDomainList);*/
+                .map(PlayerEntityMapper::toDomainList);
     }
 
 }

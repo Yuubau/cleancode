@@ -20,7 +20,6 @@ public interface PlayerEntityMapper {
   static PlayerEntity fromDomain(Player domain) {
     return PlayerEntity.builder()
             .id(domain.getId())
-            .id(domain.getId())
             .pseudo(domain.getPseudo())
             .chipNumber(domain.getChipNumber())
             .winCount(domain.getWinCount())

@@ -1,14 +1,8 @@
 package com.esgi.cleancode.server.config.domain;
 
 import com.esgi.cleancode.domain.functional.model.Hero;
-import com.esgi.cleancode.domain.functional.service.HeroCreatorService;
-import com.esgi.cleancode.domain.functional.service.HeroTemplateCreatorService;
-import com.esgi.cleancode.domain.functional.service.HeroTemplateGetAllService;
-import com.esgi.cleancode.domain.functional.service.PlayerCreatorService;
-import com.esgi.cleancode.domain.ports.client.HeroCreatorPort;
-import com.esgi.cleancode.domain.ports.client.HeroTemplateCreatorPort;
-import com.esgi.cleancode.domain.ports.client.HeroTemplateGetAllPort;
-import com.esgi.cleancode.domain.ports.client.PlayerCreatorPort;
+import com.esgi.cleancode.domain.functional.service.*;
+import com.esgi.cleancode.domain.ports.client.*;
 import com.esgi.cleancode.domain.ports.server.DbPort;
 import com.esgi.cleancode.domain.ports.server.HeroDbPort;
 import com.esgi.cleancode.domain.ports.server.HeroTemplateDbPort;
@@ -58,6 +52,11 @@ public class DomainConfiguration {
   @Bean
   public HeroTemplateGetAllPort heroTemplateGetAllService(HeroTemplateDbPort heroTemplateDbPort) {
     return new HeroTemplateGetAllService(heroTemplateDbPort);
+  }
+
+  @Bean
+  public PlayerGetAllPort playerGetAllService(PlayerDbPort playerDbPort) {
+    return new PlayerGetAllService(playerDbPort);
   }
 
 }
