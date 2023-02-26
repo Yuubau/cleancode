@@ -1,4 +1,4 @@
-CREATE DATABASE cleancode;
+CREATE DATABASE IF NOT EXISTS cleancode;
 USE cleancode;
 
 CREATE TABLE hero_template(
@@ -8,7 +8,7 @@ CREATE TABLE hero_template(
     health_points INT,
     power INT,
     armor INT,
-    rarity INT,
+    rarity INT
 );
 
 CREATE TABLE fight(
