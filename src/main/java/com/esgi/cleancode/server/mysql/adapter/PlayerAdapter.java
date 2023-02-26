@@ -8,8 +8,10 @@ import com.esgi.cleancode.domain.ports.server.PlayerDbPort;
 import com.esgi.cleancode.server.mysql.dao.HeroDao;
 import com.esgi.cleancode.server.mysql.dao.PlayerDao;
 import com.esgi.cleancode.server.mysql.entity.HeroEntity;
+import com.esgi.cleancode.server.mysql.entity.HeroTemplateEntity;
 import com.esgi.cleancode.server.mysql.entity.PlayerEntity;
 import com.esgi.cleancode.server.mysql.mapper.HeroEntityMapper;
+import com.esgi.cleancode.server.mysql.mapper.HeroTemplateEntityMapper;
 import com.esgi.cleancode.server.mysql.mapper.PlayerEntityMapper;
 import io.vavr.control.Either;
 
@@ -40,7 +42,10 @@ public class PlayerAdapter extends PlayerDao implements PlayerDbPort {
 
     @Override
     public Either<ApplicationError, Player> getById(Integer id) {
-        return null;
+        return Try(() -> super.get("SELECT * FROM player WHERE id="+id + ";", PlayerEntity.class))
+                .toEither()
+                .mapLeft(throwable -> new ApplicationError("Unable to save licence", null, null, throwable))
+                .map(PlayerEntityMapper::toDomain);
     }
 
     @Override

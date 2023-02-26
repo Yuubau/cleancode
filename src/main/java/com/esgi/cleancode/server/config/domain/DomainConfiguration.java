@@ -1,11 +1,9 @@
 package com.esgi.cleancode.server.config.domain;
 
-import com.esgi.cleancode.domain.functional.model.Hero;
 import com.esgi.cleancode.domain.functional.service.*;
 import com.esgi.cleancode.domain.ports.client.*;
 import com.esgi.cleancode.domain.ports.server.*;
 import com.esgi.cleancode.server.mysql.adapter.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -100,5 +98,14 @@ public class DomainConfiguration {
     return new FightStartService(fightDbPort, heroDbPort(), heroTemplateDbPort());
   }
 
+  @Bean
+  public PackOpenPort packOpenService(PackDbPort packDbPort, HeroTemplateDbPort heroTemplateDbPort, HeroCreatorPort heroCreatorPort, PlayerDbPort playerDbPort) {
+    return new PackOpenService(packDbPort, heroTemplateDbPort, heroCreatorPort, playerDbPort);
+  }
+
+  @Bean
+  public HeroGetPlayerHeroPort heroGetPlayerHeroPort(HeroDbPort heroDbPort) {
+    return new HeroGetPlayerHeroService(heroDbPort);
+  }
 
 }
